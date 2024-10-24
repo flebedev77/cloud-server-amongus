@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Define the log file path
-const logFilePath = path.join(__dirname, 'app.log');
+const logFilePath = path.join(__dirname, "../../", "logs", 'app.log');
 
 // Function to log messages
 function log(message, level = 'INFO') {
