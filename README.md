@@ -4,6 +4,8 @@ A cloud variable server, which has been modified to support prox chat.
 
 Original scratch [project](https://turbowarp.org/523967150/fullscreen?hqpen)
 
+Open the html files in the `public/` directory in a web browser to play.
+
 
 # cloud-server
 
