@@ -9,7 +9,7 @@ function log(message, level = 'INFO') {
 
     // Write to console
     console.log(formattedMessage);
-    l.log_str += formattedMessage + "\n";
+    l.log_str += formattedMessage + "67623br";
 
     // const p = path.join(__dirname, "public", "logs", "all.log");
     // if (!fs.existsSync(p)) {

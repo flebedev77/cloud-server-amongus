@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logs</title>
 </head>
+
 <body>
-    <%= locals.log %> 
+    <%= locals.log %>
+        <script>
+            function replaceTextWithBr() {
+                // Get the body of the document
+                const body = document.body;
+
+                // Traverse through all the child nodes of the body
+                body.innerHTML = body.innerHTML.replace(/67623br/g, '<br/>');
+            }
+
+            // Call the function to replace "br" with <br/>
+            replaceTextWithBr();
+        </script>
 </body>
+
 </html>
