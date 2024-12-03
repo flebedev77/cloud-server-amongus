@@ -7,7 +7,12 @@ function log(message, level = 'INFO') {
 
     // Write to console
     console.log(formattedMessage);
-    fs.appendFileSync(path.join(__dirname, "public", "logs", "all.log"), formattedMessage);
+
+    const p = path.join(__dirname, "public", "logs", "all.log");
+    if (!fs.existsSync(p)) {
+        fs.writeFile(p, "");
+    }
+    fs.appendFileSync(p, formattedMessage);
 }
 
 // Export the logger functions
